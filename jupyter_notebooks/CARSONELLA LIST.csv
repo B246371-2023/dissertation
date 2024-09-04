@@ -1,0 +1,182 @@
+Q05FT9,CH60,Chaperonin GroEL ,Chaperone,CHAP
+Q05FT8,CHAP10,10 kDa chaperonin ,Chaperone,CHAP
+Q05FS9,ChapGRPE,Chaperone protein GrpE ,Chaperone,CHAP
+Q05FS8,DNAK,Chaperone protein DnaK ,Chaperone,CHAP
+Q05FF9,CSP,Cold shock protein ,Cold shock,CSH
+Q05FT5,DNAhelicase,Putative replicative DNA helicase ,DNA replication,DNARP
+Q05FW7,DNApolIIIA,DNA polymerase III subunit alpha ,DNA replication,DNARP
+Q05FQ3,DNAPolIIIE,DNA polymerase III subunit epsilon ,DNA replication,DNARP
+Q05FT2,DNAprimase,Putative DNA primase ,DNA replication,DNARP
+Q05FN0,RECA,Protein RecA ,DNA replication,DNARP
+Q05FL3,ACETOL,Acetolactate synthase large subunit ,Metabolism,METAB
+Q05FM8,ALKHYDROPEROXC,Alkyl hydroperoxide reductase C ,Metabolism,METAB
+Q05FG4,ARGSUCClyase,Argininosuccinate lyase ,Metabolism,METAB
+Q05FR1,AROC,Chorismate synthase ,Metabolism,METAB
+Q05FU7,ASPGLUTamidotA,Aspartyl/glutamyl-tRNA amidotransferase A subunit ,Metabolism,METAB
+Q05FU8,ASPGLUTamidotB,Aspartyl/glutamyl-tRNA amidotransferase B subunit ,Metabolism,METAB
+Q05FN2,ASPKINASE,Aspartokinase ,Metabolism,METAB
+Q05FQ7,ASPSAdehydrog,aspartate-semialdehyde dehydrogenase ,Metabolism,METAB
+Q05FN6,ASSY,Argininosuccinate synthase ,Metabolism,METAB
+Q05FY3,ATPsynthA,ATP synthase subunit alpha ,Metabolism,METAB
+Q05FY6,ATPsynthaseC,ATP synthase F(0) sector subunit c ,Metabolism,METAB
+Q05FY1,ATPsynthB,ATP synthase subunit beta ,Metabolism,METAB
+Q05FG8,BCAAaminot,Branched-chain amino acid aminotransferase ,Metabolism,METAB
+Q05FR8,CLPP,ATP-dependent Clp protease proteolytic subunit ,Metabolism,METAB
+Q05FR7,CLPprotease,ATP-dependent Clp protease ATP-binding subunit ,Metabolism,METAB
+Q05FS3,CPsynthL,Carbamoylphosphate synthase large subunit ,Metabolism,METAB
+Q05FS4,CPsynthS1,Truncated carbamoylphosphate synthase small subunitt ,Metabolism,METAB
+Q05FS5,CPsynthS2,Truncated carbamoylphosphate synthase small subunit ,Metabolism,METAB
+Q05FH2,CYTCox,cytochrome-c oxidase ,Metabolism,METAB
+Q05FH1,CYTOoxI,Cytochrome O ubiquinol oxidase subunit I ,Metabolism,METAB
+Q05FH0,CYTOoxII,Cytochrome O ubiquinol oxidase subunit II ,Metabolism,METAB
+Q05FH3,CYTOoxIV,Putative cytochrome O ubiquinol oxidase subunit IV ,Metabolism,METAB
+Q05FG3,DAPdecarb,Diaminopimelate decarboxylase ,Metabolism,METAB
+Q05FG2,DAPepim,Diaminopimelate epimerase ,Metabolism,METAB
+Q05FW1,DHAdehydrat,Dihydroxy-acid dehydratase ,Metabolism,METAB
+Q05FX8,DHQdeydrat,3-dehydroquinate dehydratase ,Metabolism,METAB
+Q05FW2,DHQsynth,3-dehydroquinate synthase ,Metabolism,METAB
+Q05FN5,DIHPICsynth,Dihydrodipicolinate synthase ,Metabolism,METAB
+Q05FP6,DPHEPTsynth,3-deoxy-7-phosphoheptulonate synthase ,Metabolism,METAB
+Q05FY7,F0F1A,F0F1-type ATP synthase A subunit ,Metabolism,METAB
+Q05FY5,F0F1B,Putative F0F1-type ATP synthase B subunit ,Metabolism,METAB
+Q05FY2,F0F1G,F0F1-type ATP synthase gamma subunit ,Metabolism,METAB
+Q05FN7,FDXprotein,4Fe-4S ferredoxin-type domain-containing protein ,Metabolism,METAB
+Q05FQ5,FeSmetab,Fe-S metabolism associated domain-containing protein ,Metabolism,METAB
+Q05FK9,GTPase,Putative GTPase ,Metabolism,METAB
+Q05FL9,HomoSerdehyd,homoserine dehydrogenase ,Metabolism,METAB
+Q05FG9,HomoSerkinase,Homoserine kinase ,Metabolism,METAB
+Q05FS6,HTHPICreduct,4-hydroxy-tetrahydrodipicolinate reductase ,Metabolism,METAB
+Q05FQ9,IPMdehydrat1,3-isopropylmalate dehydratase ,Metabolism,METAB
+Q05FR0,IPMdehydrat2,3-isopropylmalate dehydratase ,Metabolism,METAB
+Q05FQ8,IPMdehydrog,3-isopropylmalate dehydrogenase ,Metabolism,METAB
+Q05FR2,IPMsynth,2-isopropylmalate synthase ,Metabolism,METAB
+Q05FL5,KAREDUCT,Ketol-acid reductoisomerase (NADP(+)) ,Metabolism,METAB
+Q05FN3,MALdehydro,malate dehydrogenase (quinone) ,Metabolism,METAB
+Q05FX1,METaminopepase,Methionine aminopeptidase ,Metabolism,METAB
+Q05FX5,MTHFR,Methylenetetrahydrofolate reductase ,Metabolism,METAB
+Q05FW5,MTHPTmtase,5-methyltetrahydropteroyltriglutamate--homocysteine S-methyltransferase ,Metabolism,METAB
+Q05FX9,ORNcarbase,Ornithine carbamoyltransferase ,Metabolism,METAB
+Q05FG5,PEPdeform,Peptide deformylase ,Metabolism,METAB
+Q05FV1,Pgdehydrog,6-phosphogluconate dehydrogenase ,Metabolism,METAB
+Q05FR6,PLDdiesterase,PLD phosphodiesterase domain-containing protein ,Metabolism,METAB
+Q05FU2,PrePHENdehyrat,Prephenate dehydratase domain-containing protein ,Metabolism,METAB
+Q05FU1,PSHIKcvtransf,3-phosphoshikimate 1-carboxyvinyltransferase ,Metabolism,METAB
+Q05FR3,PUTA,Bifunctional protein PutA ,Metabolism,METAB
+Q05FR4,RBP3epim,Ribulose-phosphate 3-epimerase ,Metabolism,METAB
+Q05FU3,SAMmtase,S-adenosyl-methyltransferase MraW ,Metabolism,METAB
+Q05FV5,SELCYSlyase,Selenocysteine lyase ,Metabolism,METAB
+Q05FV9,SERhmtase,Serine hydroxymethyltransferase ,Metabolism,METAB
+Q05FW3,SHIKkinase,Shikimate kinase ,Metabolism,METAB
+Q05FP8,SOD,Superoxide dismutase ,Metabolism,METAB
+Q05FX3,SUCCDAPdesucc,Succinyl-diaminopimelate desuccinylase ,Metabolism,METAB
+Q05FP1,SUCCoAalpha,Succinyl-CoA synthetase alpha subunit ,Metabolism,METAB
+Q05FP0,SUCCoAbeta,Succinyl-CoA synthetase beta subunit ,Metabolism,METAB
+Q05FX2,THDPsucctransf,Tetrahydrodipicolinate N-succinyltransferase ,Metabolism,METAB
+Q05FV2,THIORX,Putative thioredoxin ,Metabolism,METAB
+Q05FM0,THRsynth,Threonine synthase ,Metabolism,METAB
+Q05FM7,TRANSALD,transaldolase ,Metabolism,METAB
+Q05FX7,TRANSKETOL,Transketolase ,Metabolism,METAB
+Q05FH5,RL1,Ribosomal protein L1 ,Ribosomal protein ,RIBP
+Q05FH6,RL10,Ribosomal protein L10 ,Ribosomal protein ,RIBP
+Q05FH4,RL11,Large ribosomal subunit protein uL11 ,Ribosomal protein ,RIBP
+Q05FU5,RL13,Ribosomal protein L13 ,Ribosomal protein ,RIBP
+Q05FJ3,RL14,Large ribosomal subunit protein uL14 ,Ribosomal protein ,RIBP
+Q05FK0,RL15,50S ribosomal protein L15 ,Ribosomal protein ,RIBP
+Q05FJ1,RL16,Large ribosomal subunit protein uL16 ,Ribosomal protein ,RIBP
+Q05FK6,RL17,Ribosomal protein L17 ,Ribosomal protein ,RIBP
+Q05FL8,RL19,Ribosomal protein L19 ,Ribosomal protein ,RIBP
+Q05FI7,RL2,Large ribosomal subunit protein uL2 ,Ribosomal protein ,RIBP
+Q05FQ0,RL20,Large ribosomal subunit protein bL20 ,Ribosomal protein ,RIBP
+Q05FK7,RL21,50S ribosomal protein L21 ,Ribosomal protein ,RIBP
+Q05FI9,RL22,50S ribosomal protein L22 ,Ribosomal protein ,RIBP
+Q05FV0,RL25,Ribosomal protein L25 ,Ribosomal protein ,RIBP
+Q05FK8,RL27,Large ribosomal subunit protein bL27 ,Ribosomal protein ,RIBP
+Q05FM4,RL28,Ribosomal protein L28 ,Ribosomal protein ,RIBP
+Q05FI5,RL3,Large ribosomal subunit protein uL3 ,Ribosomal protein ,RIBP
+Q05FW4,RL31,50S ribosomal protein L31 ,Ribosomal protein ,RIBP
+Q05FP5,RL32,Large ribosomal subunit protein bL32 ,Ribosomal protein ,RIBP
+Q05FM5,RL33,Large ribosomal subunit protein bL33 ,Ribosomal protein ,RIBP
+Q05FK1,RL36,50S ribosomal protein L36 ,Ribosomal protein ,RIBP
+Q05FI6,RL4,Large ribosomal subunit protein uL4 ,Ribosomal protein ,RIBP
+Q05FJ4,RL5,50S ribosomal protein L5 ,Ribosomal protein ,RIBP
+Q05FJ7,RL6,50S ribosomal protein L6 ,Ribosomal protein ,RIBP
+Q05FP7,RL6,Ribosomal protein L6 ,Ribosomal protein ,RIBP
+Q05FH7,RL7/12,50S ribosomal protein L7/L12 ,Ribosomal protein ,RIBP
+Q05FU0,RS1,Putative ribosomal protein S1 ,Ribosomal protein ,RIBP
+Q05FI4,RS10,Ribosomal protein S10 ,Ribosomal protein ,RIBP
+Q05FK3,RS11,Small ribosomal subunit protein uS11 ,Ribosomal protein ,RIBP
+Q05FI0,RS12,Small ribosomal subunit protein uS12 ,Ribosomal protein ,RIBP
+Q05FK2,RS13,Small ribosomal subunit protein uS13 ,Ribosomal protein ,RIBP
+Q05FJ5,RS14,Small ribosomal subunit protein uS14 ,Ribosomal protein ,RIBP
+Q05FS1,RS15,Ribosomal protein S15 ,Ribosomal protein ,RIBP
+Q05FL6,RS16,30S ribosomal protein S16 ,Ribosomal protein ,RIBP
+Q05FJ2,RS17,30S ribosomal protein S17 ,Ribosomal protein ,RIBP
+Q05FI8,RS19,Small ribosomal subunit protein uS19 ,Ribosomal protein ,RIBP
+Q05FX0,RS2,Small ribosomal subunit protein uS2 ,Ribosomal protein ,RIBP
+Q05FJ0,RS3,Small ribosomal subunit protein uS3 ,Ribosomal protein ,RIBP
+Q05FK4,RS4,Small ribosomal subunit protein uS4 ,Ribosomal protein ,RIBP
+Q05FJ9,RS5,Small ribosomal subunit protein uS5 ,Ribosomal protein ,RIBP
+Q05FI1,RS7,Small ribosomal subunit protein uS7 ,Ribosomal protein ,RIBP
+Q05FJ6,RS8,Small ribosomal subunit protein uS8 ,Ribosomal protein ,RIBP
+Q05FU4,RS9,Small ribosomal subunit protein uS9 ,Ribosomal protein ,RIBP
+Q05FL2,PSUsynthD,Ribosomal large subunit pseudouridine synthase D ,Ribosome,RIB
+Q05FW8,RIBrecycling,Ribosome recycling factor domain-containing protein ,Ribosome,RIB
+Q05FK5,RPOA,DNA-directed RNA polymerase subunit alpha ,RNA synthesis,RNAS
+Q05FH8,RPOB,DNA-directed RNA polymerase subunit beta ,RNA synthesis,RNAS
+Q05FH9,RPOC,DNA-directed RNA polymerase subunit beta' ,RNA synthesis,RNAS
+Q05FT1,RPOD,Putative RNA polymerase sigma factor rpoD ,RNA synthesis,RNAS
+Q05FI2,EFG,Elongation factor G ,Translation,TRANSL
+Q05FW9,EFTS,Elongation factor EF-Ts ,Translation,TRANSL
+Q05FI3,EFTU,Elongation factor Tu ,Translation,TRANSL
+Q05FM1,PEPrelB,Peptide chain release factor B ,Translation,TRANSL
+Q05FU9,PEPRFA,Putative peptide chain release factor A ,Translation,TRANSL
+Q05FP9,TIF-IF3,Translation initiation factor IF-3 ,Translation,TRANSL
+Q05FV3,TIF-IF1,Translation initiation factor IF-1 ,Translation,TRANSL
+Q05FS2,TIF-IF2,Putative translation initiation factor IF-2 ,Translation,TRANSL
+Q05FV8,ABCpermease,Putative ABC transporter permease component ,Transporter,TRANS
+Q05FV7,ABCtransp,Putative ABC transporter ATP-binding component ,Transporter,TRANS
+Q05FW0,MRStransp,MFS transporter ,Transporter,TRANS
+Q05FN1,ALAtRNAlig,alanine--tRNA ligase ,tRNA ligase,tRNAL
+Q05FG1,GLYtRNAlig,Glycine--tRNA ligase alpha subunit ,tRNA ligase,tRNAL
+Q05FL1,ILEtRNAlig,isoleucine--tRNA ligase ,tRNA ligase,tRNAL
+Q05FM6,TRPtRNAlig,tryptophan--tRNA ligase ,tRNA ligase,tRNAL
+Q05FS0,TYRtRNAlig,tyrosine--tRNA ligase ,tRNA ligase,tRNAL
+Q05FM9,VALtRNAlig,valine--tRNA ligase ,tRNA ligase,tRNAL
+Q05FP2,LEUtRNAlig,leucine--tRNA ligase ,tRNA ligase,tRNAL
+Q05FY9,MNME,tRNA modification GTPase MnmE ,tRNA metabolism,tRNAM
+Q05FY8,MNMG,tRNA uridine 5-carboxymethylaminomethyl modification enzyme MnmG ,tRNA metabolism,tRNAM
+Q05FP4,tRNAmod,tRNA-2-methylthio-N(6)-dimethylallyladenosine synthase ,tRNA metabolism,tRNAM
+Q05FT7,tRNAmod2,tRNA/rRNA methyltransferase SpoU type domain-containing protein ,tRNA metabolism,tRNAM
+Q05FV4,tRNAmod3,Putative tRNA(5-methylaminomethyl-2-thiouridylate) methyltransferase ,tRNA metabolism,tRNAM
+Q05FR5,ASPtRNAsynth,Aspartyl-tRNA synthetase ,tRNA synthase,tRNAS
+Q05FR9,GLUtRNAsyth1,Glutaminyl-tRNA synthetase ,tRNA synthase,tRNAS
+Q05FN9,GLUtRNAsyth2,Putative glutamyl-tRNA synthetase ,tRNA synthase,tRNAS
+Q05FG7,HIStRNAsyn,Histidyl-tRNA synthetase ,tRNA synthase,tRNAS
+Q05FN8,METtRNAsynth,Methionyl-tRNA synthetase ,tRNA synthase,tRNAS
+Q05FQ1,PHEtRNAsynthA,Putative phenylalanyl-tRNA synthetase alpha subunit ,tRNA synthase,tRNAS
+Q05FQ6,SERtRNAsynth,Seryl-tRNA(Ser/Sec) synthetase ,tRNA synthase,tRNAS
+Q05FM2,LYStRNAsynth,Lysyl-tRNA synthetase ,tRNA synthase,tRNAS
+Q05FF8,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FG0,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FG6,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FJ8,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FL0,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FL4,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FL7,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FM3,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FN4,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FP3,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FQ2,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FQ4,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FS7,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FT0,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FT3,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FT4,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FT6,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FU6,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FV6,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FW6,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FX4,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FX6,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FY0,Unch,Uncharacterized protein ,Uncharacterized,UNC
+Q05FY4,Unch,Uncharacterized protein ,Uncharacterized,UNC

@@ -1,0 +1,6 @@
+,percentid,percent_sim,similarity_score,FATCAT_raw_score,FATCAT_pvalue
+percentid,1.0,-0.285317,-0.458015,-0.38588,0.005312
+percent_sim,-0.285317,1.0,0.253544,0.264766,0.154781
+similarity_score,-0.458015,0.253544,1.0,0.788253,-0.018717
+FATCAT_raw_score,-0.38588,0.264766,0.788253,1.0,0.33407
+FATCAT_pvalue,0.005312,0.154781,-0.018717,0.33407,1.0
