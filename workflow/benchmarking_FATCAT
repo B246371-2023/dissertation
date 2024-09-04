@@ -1,0 +1,202 @@
+#once snakemake is installed use the following command to test the struct tree
+
+
+import snakemake.utils
+snakemake.utils.min_version("7.8.0")
+snake_dir = workflow.basedir
+rootdir = ''.join([ sub + '/' for sub in snake_dir.split('/')[:-1] ] )
+print(rootdir)
+
+folders = glob_wildcards("{folders}/identifiers.txt").folders
+#folders = glob_wildcards("/home/s2530615/fold_tree/data/CATH_data/{folder}/identifiers.txt").folders
+folders = ["/home/s2530615/fold_tree/CATH_data/" + folder for folder in folders]
+print(folders)
+mattypes = ['score','p_value']
+
+foldseekpath = rootdir + 'foldseek/foldseek '
+print( len(folders) , 'families to benchmark' )
+
+configfile: rootdir+ "workflow/config/config_vars.yaml"
+
+
+
+def get_mem_mb(wildcards, attempt):
+	return attempt * 20000
+
+def get_ids(file):
+    with open(file, 'r') as f:
+        return f.read().split()
+
+rule all:
+    input:
+        expand("{folder}/similarity_matrix_score.txt", folder=folders),
+        expand("{folder}/similarity_matrix_p_value.txt", folder=folders),
+        expand("{folder}/similarity_matrix_{mattype}_struct_tree.nwk",folder=folders,mattype = mattypes),
+        expand("{folder}/{mattype}_struct_tree.PP.nwk.rooted.final", folder = folders, mattype = mattypes),
+        expand("{folder}/{mattype}_treescores_struct_tree.json", folder = folders, mattype = mattypes),
+        # expand("{folder}/structs/FATCATQue_copy.pl", folder=folders)
+
+# rule calc_RF:
+# 	conda:
+# 		#"config/fold_tree.yaml"
+# 		"foldtree"
+# 	input:
+# 		"{folder}/fident_0_{exp}_struct_tree.PP.nwk.rooted" , 
+# 		"{folder}/alntmscore_0_{exp}_struct_tree.PP.nwk.rooted" , 
+# 		"{folder}/lddt_0_{exp}_struct_tree.PP.nwk.rooted" , 
+# 		"{folder}/fident_1_{exp}_struct_tree.PP.nwk.rooted" , 
+# 		"{folder}/alntmscore_1_{exp}_struct_tree.PP.nwk.rooted" , 
+# 		"{folder}/lddt_1_{exp}_struct_tree.PP.nwk.rooted" ,
+# 		"{folder}/sequences.aln.fst.nwk.rooted",
+# 	output:
+# 		"{folder}/RFdistances_{exp}_.json" 
+# 	log:
+# 		"{folder}/logs/RFdist_{exp}_.log" 
+# 	script:
+# 		"../src/calcRF.py"
+
+
+
+rule calc_tax_score:
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		"{folder}/sequence_dataset.csv",
+		"{folder}/{mattype}_struct_tree.PP.nwk.rooted.final"
+	output:
+		"{folder}/{mattype}_treescores_struct_tree.json"
+	log:
+		"{folder}/logs/{mattype}_struct_tree_scoring.log"
+	script:
+		"../src/calctreescores.py"
+
+
+
+
+rule get_AF:
+    input:
+        "{folder}/identifiers.txt"
+    output:
+        "{folder}/structs/*"
+    script:
+        "../src/get_AF.py"
+
+rule input_generation:
+    input:
+        "{folder}/identifiers.txt"
+    output:
+        "{folder}/allpair.list"
+    script:
+        "../src/input_generate.py"
+
+rule run_FATCAT:
+    input:
+        "{folder}/allpair.list"
+        #expand("{folder}/structs/{id}.pdb", folder=config["folder"], id=get_ids(os.path.join(config["folder"], "identifiers.txt")))
+    output:
+        "{folder}/allpair.aln"
+    log:
+        "{folder}/logs/run_FATCAT.log"
+    shell:
+        """
+		echo 'command:'
+		cd {wildcards.folder}/structs/
+		echo "Current directory: $(pwd)"
+		echo 'Changed directory to: $(pwd)'
+		echo '{wildcards.folder}/structs/FATCATQue_copy.pl timeused ../{input} -q > ../{output}'
+		./FATCATQue_copy.pl timeused {input} -q > {output}
+        """
+
+
+rule generate_similarity_matrix:
+    input:
+        "{folder}/allpair.aln"
+    output:
+        "{folder}/similarity_matrix_score.txt",
+        "{folder}/similarity_matrix_p_value.txt"
+    script:
+        "../src/split_generateSimM.py"
+
+
+rule quicktree:
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		"{folder}/similarity_matrix_{mattype}.txt"
+	output:
+		"{folder}/similarity_matrix_{mattype}_struct_tree.nwk"
+	log:
+		"{folder}/logs/similarity_matrix_{mattype}_quicktree.log"
+	shell:
+		'quicktree -i m {wildcards.folder}/similarity_matrix_{wildcards.mattype}.txt > {wildcards.folder}/similarity_matrix_{wildcards.mattype}_struct_tree.nwk '
+
+
+rule mad_root_post:
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		"{folder}/{mattype}_struct_tree.PP.nwk.rooted"
+	output:
+		"{folder}/{mattype}_struct_tree.PP.nwk.rooted.final"
+	log:
+		"{folder}/logs/{mattype}_struct_madroot_post.log"
+	script:
+		'../src/process_madroot.py'
+	
+rule mad_root_struct:
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		"{folder}/{mattype}_struct_tree.PP.nwk"
+	output:
+		"{folder}/{mattype}_struct_tree.PP.nwk.rooted"
+	log:
+		"{folder}/logs/{mattype}_struct_madroot.log"
+	shell:
+		rootdir+'madroot/mad {wildcards.folder}/{wildcards.mattype}_struct_tree.PP.nwk'
+
+rule postprocess:
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		"{folder}/similarity_matrix_{mattype}_struct_tree.nwk"
+	output:
+		"{folder}/{mattype}_struct_tree.PP.nwk"
+	log:
+		"{folder}/logs/{mattype}_struct_postprocess.log"
+	script:
+		'../src/postprocess.py'
+
+
+
+rule dl_ids_sequences:
+	conda: 
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		ids="{folder}/identifiers.txt",
+	output:
+		"{folder}/sequence_dataset.csv",
+	log:
+		"{folder}/logs/dlsequences.log",
+	params:
+		custom_structs=config["custom_structs"],
+	script:
+		"../src/dl_sequences.py"
+
+
+
+# rule copy_script:
+#     input:
+#         script="/home/s2530615/fold_tree/MG-FATCAT/FATCATQue_copy.pl",
+#         folder=lambda wildcards: folders
+#     output:
+#         "{folder}/structs/FATCATQue_copy.pl"
+#     shell:
+#         "cp {input.script} {output}"
+

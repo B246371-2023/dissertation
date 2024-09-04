@@ -1,0 +1,202 @@
+
+#once snakemake is installed use the following command to test the struct tree
+
+
+import snakemake.utils
+snakemake.utils.min_version("7.8.0")
+snake_dir = workflow.basedir
+rootdir = ''.join([ sub + '/' for sub in snake_dir.split('/')[:-1] ] )
+print(rootdir)
+
+#folders = glob_wildcards("{folders}/identifiers.txt").folders
+#folders = glob_wildcards("/home/s2530615/fold_tree/data/CATH_data/{folder}/identifiers.txt").folders
+
+mattypes = ['fident', 'alntmscore', 'lddt']
+alntypes = ['0', '1']
+exp = ['raw', 'exp']
+aligners = [ 'clustalo' , 'muscle' ]
+
+foldseekpath = rootdir + 'foldseek/foldseek '
+# print( len(folders) , 'families to benchmark' )
+
+configfile: rootdir+ "workflow/config/config_vars.yaml"
+
+# remote homologues search parameters
+seed_folders = glob_wildcards("{seed_folders}/seed_structures/").seed_folders
+seed_structures = glob_wildcards("{seed_folders}/seed_structures/{seed_structures}.pdb").seed_structures
+
+
+rule all:
+	input:
+	#get all treescore and rf distance files for all alntypes
+		#expand( "{folder}/RFdistances_{exp}_.json" , folder = folders , exp = exp) ,
+		# expand( "{folder}/{mattype}_{alntype}_{exp}_treescores_struct_tree.json" , folder = folders , mattype = mattypes , alntype = alntypes , exp=exp ),
+		expand( "{folder}/treescores_sequences.{aligner}.json" ,  folder=config['folder'] , aligner = aligners) ,
+		expand( "{folder}/treescores_sequences_iq.{aligner}.json" , folder=config['folder'] , aligner = aligners)
+		# expand( "{folder}/plddt.json" , folder = folders )
+		# expand("{folder}/{mattype}_{alntype}_{exp}_struct_tree.PP.nwk.rooted", folder = folders, mattype = mattypes, alntype = alntypes, exp = exp),
+		# expand("{seed_folder}/foldseek_searches/foldseek_search_{seed}.tsv", seed = seed_structures, seed_folder = seed_folders),
+		# expand("{seed_folder}/{seed}_prob_{prob}_qcov_{qcov}_scov_{scov}_eval_{eval}_uniref90_homologs_structs/identifiers.txt", seed = seed_structures, seed_folder = seed_folders, prob = config['prob_threshold'], qcov = config['qcov_threshold'], scov = config['scov_threshold'], eval = config['evalue_threshold'])
+
+
+rule calc_tax_score_seq:
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		"{folder}/sequence_dataset.csv",
+		"{folder}/sequences.aln.{aligner}.fst.nwk.rooted"
+	output:
+		"{folder}/treescores_sequences.{aligner}.json"
+	log:
+		"{folder}/logs/sequences_scoring.{aligner}.log"
+	script:
+		"../src/calctreescores.py"
+
+rule calc_tax_score_iq:
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		"{folder}/sequence_dataset.csv",
+		"{folder}/sequences.aln.{aligner}.fst.treefile.rooted"
+	output:
+		"{folder}/treescores_sequences_iq.{aligner}.json"
+	log:
+		"{folder}/logs/iq_scoring.{aligner}.log"
+	script:
+		"../src/calctreescores.py"
+
+
+rule mad_root_seq:
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		"{folder}/sequences.aln.{aligner}.fst.nwk"
+	output:
+		"{folder}/sequences.aln.{aligner}.fst.nwk.rooted"
+	log:
+		"{folder}/logs/madrootseq.{aligner}.log"
+	shell:
+		rootdir +'madroot/mad  {wildcards.folder}/sequences.aln.{wildcards.aligner}.fst.nwk'
+
+rule mad_root_iq:
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		"{folder}/sequences.aln.{aligner}.fst.treefile"
+	output:
+		"{folder}/sequences.aln.{aligner}.fst.treefile.rooted"
+	log:
+		"{folder}/logs/madrootiq.{aligner}.log"
+	shell:
+		rootdir +'madroot/mad  {wildcards.folder}/sequences.aln.{wildcards.aligner}.fst.treefile'
+
+
+def get_mem_mb(wildcards, attempt):
+	return attempt * 20000
+
+
+rule fasttree:
+	resources:
+		mem_mb=get_mem_mb
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		alignment="{folder}/sequences.aln.{aligner}.fst"
+	output:
+		tree="{folder}/sequences.aln.{aligner}.fst.nwk"
+	log:
+		"{folder}/logs/fasttree.{aligner}.log"
+	params:
+		extra="",
+	wrapper:
+		"v1.20.0/bio/fasttree"
+
+rule iqtree:
+	resources:
+		mem_mb=get_mem_mb
+	conda:
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		alignment="{folder}/sequences.aln.{aligner}.fst"
+	output:
+		tree="{folder}/sequences.aln.{aligner}.fst.treefile"
+	log:
+		"{folder}/logs/iqtree.{aligner}.log"
+	params:
+		extra="",
+	shell:
+		'iqtree -s {wildcards.folder}/sequences.aln.{wildcards.aligner}.fst  -m LG+I+G -seed 42 -nt 1 '
+
+
+
+rule clustalo:
+	resources:
+		mem_mb=get_mem_mb
+	conda: 
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		"{folder}/sequences.fst",
+	output:
+		"{folder}/sequences.aln.clustalo.fst",
+	params:
+		extra="",
+	log:
+		"{folder}/logs/clustalo.log",
+	threads: 1
+	wrapper:
+		"v1.20.0/bio/clustalo"
+
+rule muscle:
+	resources:
+		mem_mb=get_mem_mb
+	input:
+		fasta ="{folder}/sequences.fst",
+	output:
+		alignment="{folder}/sequences.aln.muscle.fst",
+	log:
+		"{folder}/logs/muscle/muscle.log",
+	threads: 1
+	wrapper:
+		"v2.3.2/bio/muscle"
+
+rule dl_ids_sequences:
+	conda: 
+		#"config/fold_tree.yaml"
+		"foldtree"
+	input:
+		ids="{folder}/identifiers.txt",
+	output:
+		"{folder}/sequence_dataset.csv",
+	log:
+		"{folder}/logs/dlsequences.log",
+	params:
+		custom_structs=config["custom_structs"],
+	script:
+		"../src/dl_sequences.py"
+
+
+rule dl_ids_structs:
+	input:
+		"{folder}/sequence_dataset.csv",
+	output:
+		"{folder}/sequences.fst",
+		"{folder}/finalset.csv",
+	conda: 
+		#"config/fold_tree.yaml"
+		"foldtree",
+	log:
+		"{folder}/logs/dlstructs.log",
+	params:
+		filtervar=config["filter"],
+		filtervar_min=config["filter_min"],
+		filtervar_avg=config["filter_avg"],
+		custom_structs=config["custom_structs"],
+	script:
+		"../src/dl_structs.py"
