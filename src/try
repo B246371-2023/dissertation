@@ -1,0 +1,52 @@
+import pandas as pd
+import json
+
+# 定义文件路径
+pdb_path = "/home/s2530615/fold_tree/test/structs/A0A2J8ENW0.pdb"
+json_file = "/home/s2530615/fold_tree/test/output/foldseek_searches/foldseek_search_A0A2J8ENW0.json"
+output_tsv = "/home/s2530615/fold_tree/test/output/foldseek_searches/foldseek_search_A0A2J8ENW0.tsv"
+
+# 读取JSON文件
+with open(json_file, 'r') as file:
+    data = json.load(file)
+
+# 迭代结果并处理
+foldseek_results_rows = []
+for results_dbs in data['results']:
+    for alignment in results_dbs['alignments']:
+        for align in alignment:
+            foldseek_results_rows.append({
+                'pdb_file': pdb_path,
+                'db': results_dbs.get('db', '-'),
+                'query': align.get('query', '-'),
+                'target': align.get('target', '-'),
+                'seqId': align.get('seqId', '-'),
+                'alnLength': align.get('alnLength', '-'),
+                'missmatches': align.get('missmatches', '-'),
+                'gapsopened': align.get('gapsopened', '-'),
+                'qStartPos': align.get('qStartPos', '-'),
+                'qEndPos': align.get('qEndPos', '-'),
+                'dbStartPos': align.get('dbStartPos', '-'),
+                'dbEndPos': align.get('dbEndPos', '-'),
+                'prob': align.get('prob', '-'),
+                'eval': align.get('eval', '-'),
+                'score': align.get('score', '-'),
+                'qLen': align.get('qLen', '-'),
+                'dbLen': align.get('dbLen', '-'),
+                'qAln': align.get('qAln', '-'),
+                'dbAln': align.get('dbAln', '-'),
+                'tCa': align.get('tCa', '-'),
+                'tSeq': align.get('tSeq', '-'),
+                'taxId': align.get('taxId', '-'),
+                'taxName': align.get('taxName', '-')
+            })
+
+# 将结果转换为DataFrame
+final_df = pd.DataFrame(foldseek_results_rows)
+
+# 输出到TSV文件
+final_df.to_csv(output_tsv, sep='\t', index=False)
+
+# 打印前几行以验证
+print(final_df.head())
+
